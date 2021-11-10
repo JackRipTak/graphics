@@ -9,6 +9,7 @@
 //  qdot - set qdot to the updated generalized velocity using Symplectic Euler time integration
 
 template<typename FORCE> 
-inline void symplectic_euler(Eigen::VectorXd &q, Eigen::VectorXd &qdot, double dt, double mass,  FORCE &force) {
-
+inline void symplectic_euler(Eigen::VectorXd &q, Eigen::VectorXd &qdot, double dt, double mass,  FORCE &force) {	
+	forward_euler(q,qdot,dt/2,mass,force);
+	backward_euler(q,qdot,dt/2,mass,force,force);
 }

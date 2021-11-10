@@ -1,0 +1,14 @@
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/CMakeFiles/a1-mass-spring-1d.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glad/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glad/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glad/CMakeFiles/glad.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glfw/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glfw/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glfw/src/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glfw/src/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/glfw/src/CMakeFiles/glfw.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/imgui/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/imgui/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/repo/graphics/xjtu_computer-graphics_course_lab-master/Lab01/build/imgui/CMakeFiles/imgui.dir
