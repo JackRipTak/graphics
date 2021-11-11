@@ -20,7 +20,7 @@ public:
   Material(float ior,MaterialType type);
   ~Material();
 
-  bool scatter(const Ray &r, hit_record &rec, Ray &scattered, Vec3 &attenu);
+  bool scatter(const Ray &r, hit_record &rec, Ray &scattered, Vec3 &attenu,int &tag);
 
   MaterialType type;
   Vec3 albedo;
@@ -28,3 +28,6 @@ public:
   float fuzz;
   float ior; // 折射率
 };
+
+Vec3 random_in_unit_sphere();
+Vec3 random_sample_hemisphere(const Vec3 &normal);

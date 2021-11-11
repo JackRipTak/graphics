@@ -9,6 +9,12 @@ struct hit_record {
   Vec3 p;
   Vec3 normal;
   Material *mat;
+  bool front_face;
+
+    inline void set_face_normal(const Ray& r, const Vec3& outward_normal) {
+        front_face = dot(r.Direction(), outward_normal) < 0;
+        normal = front_face ? outward_normal :-outward_normal;
+    }
 }; /*该结构体记录“撞点”处的信息：离光线起点的距离t、撞点的坐标向量p、撞点处的法向量normal。*/
 
 class hitable {

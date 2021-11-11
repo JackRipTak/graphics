@@ -1,0 +1,3 @@
+/home/jackrip/Documents/graph/build/CMakeFiles/rebuild_cache.dir
+/home/jackrip/Documents/graph/build/CMakeFiles/edit_cache.dir
+/home/jackrip/Documents/graph/build/CMakeFiles/Rendering.dir

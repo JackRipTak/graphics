@@ -7,7 +7,8 @@ inline bool sphere::hit(const Ray & r, float tmin, float tmax, hit_record & rec)
     float b = dot(oc, r.Direction());
     float c = dot(oc, oc) - Radius * Radius;
     float discriminant  = b * b - a * c;
-
+	Vec3 outward_normal = (rec.p - center) / Radius;
+	rec.set_face_normal(r, outward_normal);
     if (discriminant > 0)
     {
         float temp = (-b - sqrt(b*b - a*c)) / (a) ;

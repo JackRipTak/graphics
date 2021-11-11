@@ -38,23 +38,30 @@ Vec3 color(const Ray &r, hitable *world) {
  *
  */
 using namespace std;
-Vec3 ray_color(const Ray &r, hitable *world,int depth,int &tag) {
-	if(depth<=0) return Vec3(0,0,0);//如果光线到达反射次数,停止
+Vec3 ray_color(const Ray &r, hitable *world,int depth,int tag=1) {
+	//cerr<<depth<<endl;
+	if(depth<=0) return Vec3(0,0,0);
+  //如果光线到达反射次数,停止
 	hit_record tmp;
-	//如果光线与物体相交,设置反射后的颜色
-	if(world->hit(r,0.0,FLT_MAX,tmp)){ //如果击中了物体
-		Ray scattered;//散射光线 
-		Vec3 attenuation;// 衰减度
+	if(world->hit(r,0.0,FLT_MAX,tmp)){
+		Vec3 point=tmp.p+tmp.normal+random_sample_hemisphere(tmp.normal);
+		//return Vec3(0,0,0);
+		Ray scattered; Vec3 attenuation;
 		if (tmp.mat->scatter(r, tmp, scattered, attenuation,tag))
-			//如果发生了散射，那么递归
-        	return attenuation * ray_color(scattered, world, depth-1,tag);
-        return Vec3(0,0,0);//否则光线被吸收
+            return attenuation * ray_color(scattered, world, depth-1,tag^1);
+        return Vec3(0,0,0);
 	}	
-	 //如果光线与任何物体不相交,设置背景颜色
 	Vec3 unit_direction = unit_vector(r.Direction());
     float t = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - t) * Vec3(1.0, 1.0, 1.0) +
            t * Vec3(0.5, 0.7, 1.0); // white, light blue
+
+
+  //如果光线与物体相交,设置反射后的颜色
+
+
+  //如果光线与任何物体不相交,设置背景颜色
+
 }
 
 unsigned char img[W * H * 3];
@@ -79,7 +86,7 @@ int main() {
   list.push_back(new sphere(Vec3(0, -100.5, -1), 100, diffuse_ground));
   list.push_back(new sphere(Vec3(0, 0, -1), 0.5, diffuse_center));
   list.push_back(new sphere(Vec3(-1.0,0.0,-1.0),0.5,left));
-  list.push_back(new sphere(Vec3(-1.0,0.0,-1.0),-0.4,left));
+  //list.push_back(new sphere(Vec3(-1.0,0.0,-1.0),-0.4,left));
   list.push_back(new sphere(Vec3(1.0,0.0,-1.0),0.5,right));
   hitable *world = new hitable_list(list, list.size());
 
@@ -97,8 +104,7 @@ int main() {
 
         Ray r = cam.getRay(u, v);
         //col += color(r, world);
-		int tag=1;
-         col += ray_color(r, world, Depth,tag);
+         col += ray_color(r, world, Depth);
       }
       col /= float(SamplingRate);
 
