@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <visualization.h>
 
@@ -56,13 +55,13 @@ int main(int argc, char **argv) {
     std::cout<<"Start A1 \n";
 
     //check argument for integrator type
+	//cerr<<argv[0]<<endl;
     if(argc > 1) {
        if(argv[1] == std::string("be")) { integrator_type = 1; }
        if(argv[1] == std::string("se")) { integrator_type = 2; }
        if(argv[1] == std::string("rk")) { integrator_type = 3; }
 
      }
-
     //Load data for animations
     Eigen::MatrixXd V_cow, V_spring;
     Eigen::MatrixXi F_cow, F_spring;
@@ -76,6 +75,7 @@ int main(int argc, char **argv) {
 
     q_dot(0) = 0;
     q(0) = 1; 
+	if(argc>2) q(0)=std::stoi(std::string(argv[2]));
  
     //setup libigl viewer and activate 
     Visualize::setup(q, q_dot);
