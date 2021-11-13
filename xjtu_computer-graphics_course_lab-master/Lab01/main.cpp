@@ -21,11 +21,19 @@ double mass = 1.0;
 double stiffness = 100.0; 
 double dt = 1e-2; 
 int integrator_type = 0;
+int ori=0;
 
 bool simulate(igl::opengl::glfw::Viewer & viewer) {
     
     //take a time step
-    auto force = [](Eigen::VectorXd &f, const Eigen::VectorXd &q, const Eigen::VectorXd &qdot) { dV_spring_particle_particle_dq(f, q, stiffness); f *= -1; };
+    auto force = [](Eigen::VectorXd &f, const Eigen::VectorXd &q, const Eigen::VectorXd &qdot) { 
+		Eigen::VectorXd tq=q; int tmp=abs(q(0));
+	   	//if(tmp<=ori) {f=0; return;}
+		//else {if(tq<0) tq+=ori; else tq-=ori; }	
+		if(tq(0)>=0) tq(0)-=ori;
+		else tq(0)+=ori;
+		dV_spring_particle_particle_dq(f, tq, stiffness); f *= -1;	
+	};
     auto stiff = [](Eigen::MatrixXd &k, const Eigen::VectorXd &q, const Eigen::VectorXd &qdot) { d2V_spring_particle_particle_dq2(k, q, stiffness); k *= -1; };
 
     switch(integrator_type) {
@@ -75,7 +83,7 @@ int main(int argc, char **argv) {
 
     q_dot(0) = 0;
     q(0) = 1; 
-	if(argc>2) q(0)=std::stoi(std::string(argv[2]));
+	if(argc>2) ori=std::stoi(std::string(argv[2]));
  
     //setup libigl viewer and activate 
     Visualize::setup(q, q_dot);

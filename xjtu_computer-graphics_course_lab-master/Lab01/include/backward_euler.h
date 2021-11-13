@@ -18,7 +18,9 @@ inline void backward_euler(Eigen::VectorXd &q, Eigen::VectorXd &qdot, double dt,
 //	Eigen::MatrixXd K;
 //	stiffness(K,q,qdot);
 	double k=100.0;
-	tv=(qdot-dt*k*q/mass)/(1+dt*dt*k/mass);
+	Eigen::VectorXd f;
+	force(f,q,qdot);
+	tv=(qdot+dt*f/mass)/(1+dt*dt*k/mass);
 	tq=q+dt*tv;
 	qdot=tv,q=tq;
 }
